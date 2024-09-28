@@ -10,7 +10,7 @@ sleep 2
 clear
 echo "lets install apache2"
 sleep 2
-sudo apt install apache2
+sudo apt install -y apache2
 sleep 2
 clear
 echo "installation done in apache 2!"
@@ -18,20 +18,20 @@ sleep 2
 clear
 echo "lets install mysql-server!"
 sleep 2
-sudo apt install mysql-server
+sudo apt install -y mysql-server
 clear
 echo "installation msql-server done!"
 sleep 2
 clear
 echo "lets install php and other pack needed!"
 sleep 2
-sudo apt install php php-mbstring php-zip php-gd php-json php-curl
+sudo apt install -y php php-mbstring php-zip php-gd php-json php-curl
 echo "now php is done!!!"
 sleep 2
 clear
 echo "lets install phpmyadmin"
 sleep 2
-sudo apt install phpmyadmin
+sudo apt -y install phpmyadmin
 echo "doneeeeeee!!!! for phpmyadmin"
 sleep 2
 clear
