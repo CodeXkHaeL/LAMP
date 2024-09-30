@@ -1,42 +1,58 @@
 #!/bin/bash
-echo "Automate the Lamp installation:with phpmyadmin!!"
+# Display a welcome message and start the installation process
+echo "Automating the LAMP stack installation with phpMyAdmin!"
 sleep 2
 clear
-echo "lets update first!"
+
+
+echo "Updating package list..."
 sleep 2
 sudo apt update
-echo "done update"
+echo "Update complete."
 sleep 2
 clear
-echo "lets install apache2"
+
+
+echo "Installing Apache2..."
 sleep 2
 sudo apt install -y apache2
 sleep 2
 clear
-echo "installation done in apache 2!"
+echo "Apache2 installation complete!"
 sleep 2
 clear
-echo "lets install mysql-server!"
+
+
+echo "Installing MySQL server..."
 sleep 2
 sudo apt install -y mysql-server
 clear
-echo "installation msql-server done!"
+echo "MySQL server installation complete!"
 sleep 2
 clear
-echo "lets install php and other pack needed!"
+
+echo "Installing PHP and necessary extensions..."
 sleep 2
 sudo apt install -y php php-mbstring php-zip php-gd php-json php-curl
 echo "now php is done!!!"
 sleep 2
 clear
-echo "lets install phpmyadmin"
+echo "PHP installation complete!"
 sleep 2
+clear
+
+
+echo "Installing phpMyAdmin..."
+
 echo "phpmyadmin phpmyadmin/reconfigure-webserver select apache2" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/dbconfig-install boolean false" | sudo debconf-set-selections
 sudo apt install -y phpmyadmin
-echo "doneeeeeee!!!! for phpmyadmin"
+echo "phpMyAdmin installation complete!"
 sleep 2
 clear
+
+
+# Enable the mbstring extension for PHP
 sudo phpenmod mbstring
 cat <<EOL > /etc/apache2/conf-available/phpmyadmin.conf
 Alias /phpmyadmin /usr/share/phpmyadmin
@@ -55,8 +71,10 @@ Alias /phpmyadmin /usr/share/phpmyadmin
     </IfModule>
 </Directory>
 EOL
+
 sudo a2enconf phpmyadmin
 sudo systemctl restart apache2
+
 read -p "please enter you're username for mysql login:" username
 read -sp "please enter youre password:" pass
 sudo mysql <<EOF
@@ -65,7 +83,5 @@ GRANT ALL PRIVILEGES ON *.* TO '$username'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
 clear
-echo "now its done enjoy!!!"
+echo "LAMP stack and phpMyAdmin installation complete! Enjoy your setup!"
 sleep 2
-
-
