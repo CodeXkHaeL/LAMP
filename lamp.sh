@@ -31,7 +31,9 @@ sleep 2
 clear
 echo "lets install phpmyadmin"
 sleep 2
-sudo apt -y install phpmyadmin
+echo "phpmyadmin phpmyadmin/reconfigure-webserver select apache2" | sudo debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean false" | sudo debconf-set-selections
+sudo apt install -y phpmyadmin
 echo "doneeeeeee!!!! for phpmyadmin"
 sleep 2
 clear
@@ -59,7 +61,7 @@ read -p "please enter you're username for mysql:" username
 read -sp "please enter youre password" pass
 sudo mysql <<EOF
 CREATE USER '$username'@'localhost' IDENTIFIED BY '$pass';
-GRANT ALL PRIVILEGES ON *.* TO 'khael'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO '$username'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
 clear
