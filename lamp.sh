@@ -57,8 +57,8 @@ Alias /phpmyadmin /usr/share/phpmyadmin
 EOL
 sudo a2enconf phpmyadmin
 sudo systemctl restart apache2
-read -p "please enter you're username for mysql:" username
-read -sp "please enter youre password" pass
+read -p "please enter you're username for mysql login:" username
+read -sp "please enter youre password:" pass
 sudo mysql <<EOF
 CREATE USER '$username'@'localhost' IDENTIFIED BY '$pass';
 GRANT ALL PRIVILEGES ON *.* TO '$username'@'localhost' WITH GRANT OPTION;
