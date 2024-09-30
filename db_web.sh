@@ -5,7 +5,7 @@ sudo rm /var/www/html/index.html
 sudo cp -r sample_login_web/* /var/www/html/
 sudo mysql <<EOF
 CREATE DATABASE test_db;
-USE users;
+USE test_db;
 CREATE TABLE users (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
