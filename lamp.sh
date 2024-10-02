@@ -96,7 +96,7 @@ sudo systemctl restart apache2
 read -p "please enter you're username for mysql login:" username
 read -sp "please enter youre password:" password
 sudo mysql <<EOF
-CREATE USER '$username'@'localhost' IDENTIFIED BY '$pass';
+CREATE USER '$username'@'localhost' IDENTIFIED BY '$password';
 GRANT ALL PRIVILEGES ON *.* TO '$username'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
